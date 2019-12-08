@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+  
+  <script>
+
+    let playerScore = 0;
+    let computerScore = 0;
+    let winner = '';
+
+    function computerSelection() {
+        // value from 1 to 3
+        value = Math.floor((Math.random() * 3) + 1);
+        
+        // switch statement that takes in value
+        switch (value) {
+            case 1:
+                return 1;
+                break;
+            case 2:
+                return 2;
+                break;
+            case 3:
+                return 3;
+                break;
+        }
+    }
+  
+    function playerSelection() {
+        let ps = prompt("Rock, paper, or scissors?")
+
+            switch (ps.toLowerCase()) {
+                case "rock":
+                    return 1;
+                    break;
+                case "paper":
+                    return 2;
+                    break;
+                case "scissors":
+                    return 3;
+                    break;
+                default:
+                    text = "Incorrect value";
+            }
+    }
+
+    function playRound() {
+        
+        let winner = '';
+
+        playerSelects = playerSelection();
+        computerSelects = computerSelection();
+
+        if (playerSelects == 1 && computerSelects == 2) {
+            winner = 'computer';
+            return winner;
+        }
+        if (playerSelects == 1 && computerSelects == 3) {
+            winner = 'player';
+            return winner;
+        }
+        if (playerSelects == 2 && computerSelects == 1) {
+            winner = 'player';
+            return winner;
+        }
+        if (playerSelects == 2 && computerSelects == 3) {
+            winner = 'computer';
+            return winner;
+        }
+        if (playerSelects == 3 && computerSelects == 1) {
+            winner = 'computer';
+            return winner;
+        }
+        if (playerSelects == 3 && computerSelects == 2) {
+            winner = 'player';
+            return winner;
+        }
+        else {
+            winner = 'draw';
+            return winner;
+        }
+    } 
+
+    function game() {
+        
+        let playerScore = 0;
+        let computerScore = 0;
+        let winner = '';
+
+        // counts player and computer scores
+        for (let i = 0; i < 5; i++) {
+            let outcome = playRound();
+
+            if (outcome == "computer") {
+                computerScore++;
+                console.log("You lost this round");
+            } else if (outcome == "player") {
+                playerScore++;
+                console.log("You won this round");
+            } else {
+                console.log("Draw");
+            }
+        }
+        
+        // stops game after 5 games or more if more games are needed
+        for (let j = 0; j < 5; j++) {
+            if (j < 4) {
+                continue;
+            }
+            
+            if (playerScore < computerScore) {
+                console.log("You lose " + computerScore + " to " + playerScore);
+            } else if (playerScore > computerScore) {
+                console.log("You win " + playerScore + " to " + computerScore);
+            } else {
+                console.log("DRAW");
+            }
+        }
+    }
+  
+  </script>
